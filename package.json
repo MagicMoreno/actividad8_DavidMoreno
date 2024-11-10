@@ -1,0 +1,29 @@
+{
+  "name": "actividad8",
+  "version": "1.5.0",
+  "description": "Este es la actividad 8 de David Moreno.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "generate": "express generate",
+    "config": "express config"
+  },
+  "keywords": [
+    "express",
+    "init",
+    "template"
+  ],
+  "author": "David Moreno",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "cli-express": "^1.2.0",
+    "nodemon": "^3.0.1"
+  }
+}
