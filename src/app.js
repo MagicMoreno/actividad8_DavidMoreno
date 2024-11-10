@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(cors());
 
 // Route configuration
-// Ex.
+app.use('/api', apiRoutes);
 // app.use('/api', require('./routes/api'));
 
 // Error handler
@@ -17,3 +17,4 @@ app.use((err, req, res, next) => {
 })
 
 module.exports = app;
+
