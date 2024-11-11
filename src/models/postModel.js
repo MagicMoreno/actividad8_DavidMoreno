@@ -2,7 +2,7 @@
 const db = require('../config/db');
 
 // Crear un nuevo post
-function createPost({ title, description, category, author_id }) {
+function insertPost({ title, description, category, author_id }) {
     return pool.query(
         'insert into clientes (title, description, category, author_id) values (?, ?, ?, ?)',
         [title, description, category, author_id]
@@ -28,5 +28,5 @@ function getPostsByAuthor(authorId) {
     );
 };
 
-module.exports = { createPost, getAllPostsWithAuthors, getPostsByAuthor };
+module.exports = { insertPost, getAllPostsWithAuthors, getPostsByAuthor };
 

@@ -1,6 +1,6 @@
 const db = require('../config/db');
 
-function createAuthor({ name, email, image }) {
+function insertAuthor({ name, email, image }) {
     return pool.query(
         'insert into clientes (name, email, image) values (?, ?, ?)',
         [name, email, image]
@@ -17,6 +17,6 @@ async function getAuthorById(id) {
     return authors[0];
 };
 
-module.exports = { createAuthor, getAuthorById };
+module.exports = { insertAuthor, getAuthorById };
 
 
