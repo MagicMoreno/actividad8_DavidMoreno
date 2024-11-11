@@ -1,8 +1,8 @@
-const db = require('../config/db');
+const pool = require('../config/db');
 
 function insertAuthor({ name, email, image }) {
     return pool.query(
-        'insert into clientes (name, email, image) values (?, ?, ?)',
+        'insert into authors (name, email, image) values (?, ?, ?)',
         [name, email, image]
     );
 };

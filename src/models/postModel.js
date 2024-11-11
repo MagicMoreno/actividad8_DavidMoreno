@@ -1,10 +1,10 @@
 // models/postModel.js
-const db = require('../config/db');
+const pool = require('../config/db');
 
 // Crear un nuevo post
 function insertPost({ title, description, category, author_id }) {
     return pool.query(
-        'insert into clientes (title, description, category, author_id) values (?, ?, ?, ?)',
+        'insert into posts (title, description, category) values (?, ?, ?)',
         [title, description, category, author_id]
     );
 };

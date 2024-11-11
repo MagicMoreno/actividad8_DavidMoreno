@@ -1,1 +1,30 @@
 @url = http://localhost:3000/api
+
+###
+GET {{url}}/posts
+Content-Type: application/json
+
+###
+POST {{url}}/authors
+Content-Type: application/json
+
+{
+    "name": "John sasa",
+    "email": "john@example.com",
+    "image": "https://example.com/imagen.jpg"
+}
+
+###
+GET {{url}}/authors/1/posts
+Content-Type: application/json
+
+###
+POST {{url}}/posts
+Content-Type: application/json
+
+{
+    "title": "Mi primer post",
+    "description": "Este es el contenido de mi primer post.",
+    "category": "Tutorial",
+    "author_id": 1
+}
