@@ -2,10 +2,10 @@
 const pool = require('../config/db');
 
 // Crear un nuevo post
-function insertPost({ title, description, category, author_id }) {
+function insertPost({ title, description, category, authors_id }) {
     return pool.query(
-        'insert into posts (title, description, category) values (?, ?, ?)',
-        [title, description, category, author_id]
+        'insert into posts (title, description, category, authors_id) values (?, ?, ?, ?)',
+        [title, description, category, authors_id]
     );
 };
 
@@ -14,7 +14,7 @@ function getAllPostsWithAuthors() {
     return pool.query(`
     SELECT posts.*, authors.name AS author_name, authors.email AS author_email, authors.image AS author_image
     FROM posts
-    JOIN authors ON posts.author_id = authors.id
+    JOIN authors ON posts.authors_id = authors.id
   `)
 }
 
@@ -23,7 +23,7 @@ function getPostsByAuthor(authorId) {
     return pool.query(`
     SELECT posts.*, authors.name AS author_name, authors.email AS author_email, authors.image AS author_image
     FROM posts
-    JOIN authors ON posts.author_id = authors.id
+    JOIN authors ON posts.authors_id = authors.id
     WHERE authors.id = ?`, [authorId]
     );
 };
