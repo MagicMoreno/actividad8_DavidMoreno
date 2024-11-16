@@ -5,17 +5,22 @@ GET {{url}}/posts
 Content-Type: application/json
 
 ###
+GET {{url}}/authors
+Content-Type: application/json
+
+
+###
 POST {{url}}/authors
 Content-Type: application/json
 
 {
-    "name": "John sasa",
-    "email": "john@example.com",
-    "image": "https://example.com/imagen.jpg"
+    "name": "ferxo",
+    "email": "ferxo@example.com",
+    "image": "https://ferxo.com/imagen.jpg"
 }
 
 ###
-GET {{url}}/authors/1/posts
+GET {{url}}/authors/5/posts
 Content-Type: application/json
 
 ###
@@ -23,8 +28,8 @@ POST {{url}}/posts
 Content-Type: application/json
 
 {
-    "title": "viejo post",
-    "description": "post viejo",
-    "category": "Tutorial -2",
-    "authors_id": 3
+    "title": "prueba 6",
+    "description": "esto es una prueba",
+    "category": "prueba",
+    "authors_id": 5
 }

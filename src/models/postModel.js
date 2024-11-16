@@ -1,32 +1,43 @@
-// models/postModel.js
+
 const pool = require('../config/db');
 
-// Crear un nuevo post
-function insertPost({ title, description, category, authors_id }) {
-    return pool.query(
+async function insertPost({ title, description, category, authors_id }) {
+    const [result] = await pool.query(
         'insert into posts (title, description, category, authors_id) values (?, ?, ?, ?)',
         [title, description, category, authors_id]
     );
+    return result;
 };
 
-// Obtener todos los posts con datos del autor
+async function getPostsByAuthor(postId) {
+    const [result] = await pool.query(`
+    SELECT posts.*, authors.name AS author_name, authors.email AS author_email, authors.image AS author_image
+    FROM posts
+    JOIN authors ON posts.authors_id = authors.id
+    WHERE posts.id = ?`, [postId]
+    );
+    return result;
+};
+
+async function getPostsByAuthor2(authors_id) {
+    const [result] = await pool.query(`
+    SELECT posts.*, authors.name AS author_name, authors.email AS author_email, authors.image AS author_image
+    FROM posts
+    JOIN authors ON posts.authors_id = authors.id
+    WHERE authors.id = ?`, [authors_id]
+    );
+    return result;
+};
+
+
+
 function getAllPostsWithAuthors() {
     return pool.query(`
     SELECT posts.*, authors.name AS author_name, authors.email AS author_email, authors.image AS author_image
     FROM posts
     JOIN authors ON posts.authors_id = authors.id
   `)
-}
-
-// Obtener posts por autor
-function getPostsByAuthor(authorId) {
-    return pool.query(`
-    SELECT posts.*, authors.name AS author_name, authors.email AS author_email, authors.image AS author_image
-    FROM posts
-    JOIN authors ON posts.authors_id = authors.id
-    WHERE authors.id = ?`, [authorId]
-    );
 };
 
-module.exports = { insertPost, getAllPostsWithAuthors, getPostsByAuthor };
+module.exports = { insertPost, getAllPostsWithAuthors, getPostsByAuthor, getPostsByAuthor2 };
 

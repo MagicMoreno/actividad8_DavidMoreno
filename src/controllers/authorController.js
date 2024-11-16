@@ -1,18 +1,25 @@
-// controllers/authorController.js
-const { insertAuthor, getAuthorById } = require('../models/authorModel');
+const { insertAuthor, getAuthorById, getAll } = require('../models/authorModel');
 
 const createAuthor = async (req, res, next) => {
     try {
-        // Insertar el nuevo cliente
-        const [result] = await insertAuthor(req.body);
-        // Recuperar los datos del nuevo cliente
-        const author = await getAuthorById(result.authors_id);
-        res.json(author);
+        const result = await insertAuthor(req.body);
+        const author = await getAuthorById(result.insertId);
+        res.status(201).json(author);
     } catch (error) {
         next(error);
     }
 };
 
-module.exports = { createAuthor };
+const getAllAuthors = async (req, res, next) => {
+    try {
+        const [authors] = await getAll();
+        res.json(authors);
+    } catch (error) {
+        next(error);
+    }
+};
+
+
+module.exports = { createAuthor, getAllAuthors };
 
 
