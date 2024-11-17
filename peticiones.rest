@@ -14,13 +14,13 @@ POST {{url}}/authors
 Content-Type: application/json
 
 {
-    "name": "Daniel",
-    "email": "daniel@example.com",
-    "image": "https://daniel.com/imagen.jpg"
+    "name": "Dani",
+    "email": "dani@example.com",
+    "image": "https://dani.com/imagen.jpg"
 }
 
 ###
-GET {{url}}/authors/18/posts
+GET {{url}}/authors/5/posts
 Content-Type: application/json
 
 ###
