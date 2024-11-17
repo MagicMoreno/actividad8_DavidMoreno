@@ -14,13 +14,13 @@ POST {{url}}/authors
 Content-Type: application/json
 
 {
-    "name": "ferxo",
-    "email": "ferxo@example.com",
-    "image": "https://ferxo.com/imagen.jpg"
+    "name": "Daniel",
+    "email": "daniel@example.com",
+    "image": "https://daniel.com/imagen.jpg"
 }
 
 ###
-GET {{url}}/authors/5/posts
+GET {{url}}/authors/18/posts
 Content-Type: application/json
 
 ###
@@ -28,8 +28,8 @@ POST {{url}}/posts
 Content-Type: application/json
 
 {
-    "title": "prueba 6",
+    "title": "prueba finalisima",
     "description": "esto es una prueba",
-    "category": "prueba",
-    "authors_id": 5
+    "category": "pruebas",
+    "authors_id": 18
 }

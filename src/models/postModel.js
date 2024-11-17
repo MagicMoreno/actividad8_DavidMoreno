@@ -11,30 +11,30 @@ async function insertPost({ title, description, category, authors_id }) {
 
 async function getPostsByAuthor(postId) {
     const [result] = await pool.query(`
-    SELECT posts.*, authors.name AS author_name, authors.email AS author_email, authors.image AS author_image
-    FROM posts
+    SELECT * FROM posts
     JOIN authors ON posts.authors_id = authors.id
     WHERE posts.id = ?`, [postId]
     );
     return result;
 };
 
-async function getPostsByAuthor2(authors_id) {
-    const [result] = await pool.query(`
-    SELECT posts.*, authors.name AS author_name, authors.email AS author_email, authors.image AS author_image
-    FROM posts
-    JOIN authors ON posts.authors_id = authors.id
-    WHERE authors.id = ?`, [authors_id]
-    );
-    return result;
+// async function getPostsByAuthor2(authors_id) {
+//     const [result] = await pool.query(`
+//     SELECT posts.*, authors.name AS author_name, authors.email AS author_email, authors.image AS author_image
+//     FROM posts
+//     JOIN authors ON posts.authors_id = authors.id
+//     WHERE authors.id = ?`, [authors_id]);
+//     return result;
+// };
+async function getPostsByAuthor2(authors_id){
+    return pool.query(`SELECT * FROM posts where authors_id = ?`, [authors_id]);
 };
 
 
 
 function getAllPostsWithAuthors() {
     return pool.query(`
-    SELECT posts.*, authors.name AS author_name, authors.email AS author_email, authors.image AS author_image
-    FROM posts
+    SELECT * FROM posts
     JOIN authors ON posts.authors_id = authors.id
   `)
 };
